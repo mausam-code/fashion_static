@@ -20,10 +20,10 @@
             --text: #333333;
             --light: #f9f9f9;
             --gray: #777777;
-            --spacing-sm: 8px;
-            --spacing-md: 16px;
-            --spacing-lg: 32px;
-            --spacing-xl: 64px;
+            --spacing-sm: 0.5rem;
+            --spacing-md: 1rem;
+            --spacing-lg: 2rem;
+            --spacing-xl: 4rem;
             --border-radius: 4px;
             --transition: all 0.3s ease;
         }
@@ -35,7 +35,7 @@
             line-height: 1.6;
         }
 
-        h1, h2, h3, h4, h5 {
+        h1, h2, h3 {
             font-family: 'Playfair Display', serif;
             font-weight: 600;
             line-height: 1.2;
@@ -62,11 +62,10 @@
             justify-content: space-between;
             align-items: center;
             padding: var(--spacing-sm) 0;
-            border-bottom: 1px solid var(--secondary);
         }
 
         .logo {
-            font-size: 28px;
+            font-size: clamp(1.5rem, 4vw, 2rem);
             font-weight: 700;
             letter-spacing: 2px;
             color: var(--primary);
@@ -84,7 +83,23 @@
 
         .header-actions a {
             color: var(--text);
-            font-size: 18px;
+            font-size: clamp(1rem, 3vw, 1.125rem);
+            transition: var(--transition);
+        }
+
+        .header-actions a:hover {
+            color: var(--accent);
+            transform: scale(1.1);
+        }
+
+        /* Mobile Menu */
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--text);
+            cursor: pointer;
         }
 
         nav {
@@ -96,6 +111,7 @@
             list-style: none;
             justify-content: center;
             gap: var(--spacing-lg);
+            flex-wrap: wrap;
         }
 
         .nav-menu li a {
@@ -103,9 +119,10 @@
             color: var(--text);
             font-weight: 500;
             text-transform: uppercase;
-            font-size: 14px;
+            font-size: clamp(0.75rem, 2vw, 0.875rem);
             letter-spacing: 1px;
             transition: var(--transition);
+            padding: 0.5rem;
         }
 
         .nav-menu li a:hover {
@@ -115,8 +132,8 @@
         /* Hero Section */
         .hero {
             position: relative;
-            height: 80vh;
-            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1483985988355-763728e1935b?ixlib=rb-4.0.3') center/cover no-repeat;
+            height: clamp(60vh, 80vh, 90vh);
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('jj.jpg') center/cover no-repeat;
             display: flex;
             align-items: center;
             color: white;
@@ -126,24 +143,27 @@
         .hero-content {
             max-width: 700px;
             margin: 0 auto;
-            padding: var(--spacing-xl);
+            padding: var(--spacing-lg);
         }
 
         .hero h1 {
-            font-size: 3.5rem;
+            font-size: clamp(2rem, 6vw, 3.5rem);
             margin-bottom: var(--spacing-md);
             text-shadow: 0 2px 4px rgba(0,0,0,0.3);
         }
 
         .hero p {
-            font-size: 1.2rem;
+            font-size: clamp(1rem, 3vw, 1.2rem);
             margin-bottom: var(--spacing-lg);
             opacity: 0.9;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .btn {
             display: inline-block;
-            padding: 12px 30px;
+            padding: clamp(0.75rem, 2vw, 1rem) clamp(1.5rem, 4vw, 2rem);
             background-color: var(--accent);
             color: white;
             text-decoration: none;
@@ -153,18 +173,20 @@
             border-radius: var(--border-radius);
             transition: var(--transition);
             border: 2px solid var(--accent);
+            font-size: clamp(0.875rem, 2vw, 1rem);
+            margin: 0.25rem;
         }
 
         .btn:hover {
             background-color: transparent;
             color: var(--accent);
+            transform: translateY(-2px);
         }
 
         .btn-outline {
             background-color: transparent;
             border: 2px solid white;
             color: white;
-            margin-left: var(--spacing-sm);
         }
 
         .btn-outline:hover {
@@ -172,9 +194,9 @@
             color: var(--primary);
         }
 
-        /* Categories */
+        /* Sections */
         .section {
-            padding: var(--spacing-xl) 0;
+            padding: clamp(2rem, 8vw, 4rem) 0;
         }
 
         .section-header {
@@ -183,7 +205,7 @@
         }
 
         .section-title {
-            font-size: 2.5rem;
+            font-size: clamp(1.5rem, 5vw, 2.5rem);
             position: relative;
             display: inline-block;
             padding-bottom: var(--spacing-sm);
@@ -200,6 +222,7 @@
             background-color: var(--accent);
         }
 
+        /* Categories */
         .categories-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -208,10 +231,11 @@
 
         .category-card {
             position: relative;
-            height: 300px;
+            height: clamp(250px, 40vw, 300px);
             overflow: hidden;
             border-radius: var(--border-radius);
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            cursor: pointer;
         }
 
         .category-img {
@@ -236,7 +260,7 @@
         }
 
         .category-content h3 {
-            font-size: 1.5rem;
+            font-size: clamp(1.25rem, 3vw, 1.5rem);
             margin-bottom: var(--spacing-sm);
         }
 
@@ -256,13 +280,13 @@
         }
 
         .product-card:hover {
-            transform: translateY(-10px);
+            transform: translateY(-5px);
             box-shadow: 0 10px 25px rgba(0,0,0,0.1);
         }
 
         .product-img {
             width: 100%;
-            height: 300px;
+            height: clamp(200px, 30vw, 300px);
             object-fit: cover;
         }
 
@@ -271,27 +295,28 @@
         }
 
         .product-title {
-            font-size: 1.1rem;
+            font-size: clamp(1rem, 2.5vw, 1.1rem);
             margin-bottom: var(--spacing-sm);
         }
 
         .product-price {
             font-weight: 700;
             color: var(--accent);
-            font-size: 1.2rem;
+            font-size: clamp(1.1rem, 3vw, 1.2rem);
             margin-bottom: var(--spacing-sm);
         }
 
         .rating {
             color: #ffc107;
             margin-bottom: var(--spacing-sm);
+            font-size: 0.9rem;
         }
 
         /* Newsletter */
         .newsletter {
             background-color: var(--primary);
             color: white;
-            padding: var(--spacing-xl) 0;
+            padding: clamp(2rem, 8vw, 4rem) 0;
             text-align: center;
         }
 
@@ -303,61 +328,67 @@
         .newsletter h2 {
             color: white;
             margin-bottom: var(--spacing-md);
+            font-size: clamp(1.5rem, 4vw, 2rem);
         }
 
         .newsletter p {
             margin-bottom: var(--spacing-lg);
             opacity: 0.8;
+            font-size: clamp(0.9rem, 2.5vw, 1rem);
         }
 
         .newsletter-form {
             display: flex;
             max-width: 500px;
             margin: 0 auto;
+            gap: 0.5rem;
         }
 
         .newsletter-form input {
             flex: 1;
-            padding: 15px;
+            padding: clamp(0.75rem, 2vw, 1rem);
             border: none;
-            border-radius: var(--border-radius) 0 0 var(--border-radius);
+            border-radius: var(--border-radius);
             font-family: inherit;
-            font-size: 1rem;
+            font-size: clamp(0.9rem, 2vw, 1rem);
         }
 
         .newsletter-form button {
             background-color: var(--accent);
             color: white;
             border: none;
-            padding: 0 25px;
-            border-radius: 0 var(--border-radius) var(--border-radius) 0;
+            padding: 0 clamp(1rem, 3vw, 1.5rem);
+            border-radius: var(--border-radius);
             font-weight: 600;
             cursor: pointer;
             transition: var(--transition);
+            font-size: clamp(0.9rem, 2vw, 1rem);
+            white-space: nowrap;
         }
 
         .newsletter-form button:hover {
             background-color: #c19d2e;
+            transform: translateY(-2px);
         }
 
         /* Footer */
         footer {
             background-color: #222;
             color: #ddd;
-            padding: var(--spacing-xl) 0 0;
+            padding: clamp(2rem, 6vw, 4rem) 0 0;
         }
 
         .footer-content {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: var(--spacing-xl);
-            margin-bottom: var(--spacing-xl);
+            gap: var(--spacing-lg);
+            margin-bottom: var(--spacing-lg);
         }
 
         .footer-column h3 {
             color: white;
             margin-bottom: var(--spacing-md);
-            font-size: 1.3rem;
+            font-size: clamp(1.1rem, 3vw, 1.3rem);
             position: relative;
             padding-bottom: 10px;
         }
@@ -384,6 +415,7 @@
             color: #aaa;
             text-decoration: none;
             transition: var(--transition);
+            font-size: clamp(0.9rem, 2vw, 1rem);
         }
 
         .footer-links a:hover {
@@ -395,6 +427,7 @@
             display: flex;
             gap: 15px;
             margin-top: var(--spacing-md);
+            flex-wrap: wrap;
         }
 
         .social-links a {
@@ -411,42 +444,108 @@
 
         .social-links a:hover {
             background-color: var(--accent);
-            transform: translateY(-5px);
+            transform: translateY(-3px);
         }
 
         .footer-bottom {
             border-top: 1px solid #444;
             padding: var(--spacing-md) 0;
             text-align: center;
-            font-size: 0.9rem;
+            font-size: clamp(0.8rem, 2vw, 0.9rem);
             color: #888;
         }
 
-        /* Responsive */
+        /* Mobile Responsive */
         @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2.5rem;
+            .container {
+                padding: 0 var(--spacing-sm);
+            }
+            
+            .header-top {
+                padding: var(--spacing-sm) 0;
+            }
+            
+            .menu-toggle {
+                display: block;
             }
             
             .nav-menu {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: white;
+                box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+                padding: var(--spacing-md);
+                gap: var(--spacing-sm);
+            }
+            
+            .nav-menu.active {
+                display: flex;
+            }
+            
+            .nav-menu li a {
+                padding: var(--spacing-sm);
+                border-bottom: 1px solid var(--secondary);
+            }
+            
+            .categories-grid {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
                 gap: var(--spacing-md);
-                flex-wrap: wrap;
+            }
+            
+            .products-grid {
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                gap: var(--spacing-md);
             }
             
             .newsletter-form {
                 flex-direction: column;
-                gap: 10px;
+                gap: var(--spacing-sm);
             }
             
             .newsletter-form input,
             .newsletter-form button {
-                border-radius: var(--border-radius);
                 width: 100%;
             }
             
-            .btn-outline {
-                margin-left: 0;
-                margin-top: var(--spacing-sm);
+            .hero-content {
+                padding: var(--spacing-md);
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: var(--spacing-md);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .categories-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .products-grid {
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            }
+            
+            .header-actions {
+                gap: var(--spacing-sm);
+            }
+        }
+
+        /* Performance optimizations */
+        .category-img, .product-img {
+            loading: lazy;
+        }
+
+        /* Accessibility improvements */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
             }
         }
     </style>
@@ -456,11 +555,14 @@
     <header>
         <div class="container">
             <div class="header-top">
-                <a href="#" class="logo"> Jessica <span>.</span></a>
+                <a href="#" class="logo">Jessica<span>.</span></a>
+                <button class="menu-toggle" aria-label="Toggle menu">
+                    <i class="fas fa-bars"></i>
+                </button>
                 <div class="header-actions">
-                    <a href="#"><i class="fas fa-search"></i></a>
-                    <a href="#"><i class="fas fa-user"></i></a>
-                    <a href="#"><i class="fas fa-shopping-bag"></i></a>
+                    <a href="#" aria-label="Search"><i class="fas fa-search"></i></a>
+                    <a href="#" aria-label="Account"><i class="fas fa-user"></i></a>
+                    <a href="#" aria-label="Shopping bag"><i class="fas fa-shopping-bag"></i></a>
                 </div>
             </div>
             <nav>
@@ -468,11 +570,7 @@
                     <li><a href="#">Home</a></li>
                     <li><a href="#">New Arrivals</a></li>
                     <li><a href="#">Collections</a></li>
-                    <li><a href="#">Accessories</a></li>
-                    <li><a href="#">Footwear</a></li>
-                    <li><a href="#">Outerwear</a></li>
                     <li><a href="#">Sale</a></li>
-                    <li><a href="#">Blog</a></li>
                     <li><a href="#">Contact</a></li>
                 </ul>
             </nav>
@@ -483,44 +581,50 @@
     <section class="hero">
         <div class="hero-content">
             <h1>Elevate Your Style</h1>
-            <p>Discover the latest trends in men's fashion with our premium collection of clothing and accessories.</p>
+            <p>Discover the latest trends in fashion with our premium collection of clothing and accessories.</p>
             <div class="hero-btns">
-                <a href="#" class="btn">Shop Now</a>
-                <a href="#" class="btn btn-outline">View Collection</a>
+
+            </div>
+            <div class="hero-btns">
+                
+            </div>
+            <div class="hero-btns">
+                <a href="#products" class="btn">Shop Now</a>
+                <a href="#categories" class="btn btn-outline">View Collection</a>
             </div>
         </div>
     </section>
 
     <!-- Categories Section -->
-    <section class="section">
+    <section id="categories" class="section">
         <div class="container">
             <div class="section-header">
                 <h2 class="section-title">Shop By Category</h2>
             </div>
             <div class="categories-grid">
                 <div class="category-card">
-                    <img src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?ixlib=rb-4.0.3" alt="T-Shirts" class="category-img">
+                    <img src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?ixlib=rb-4.0.3" alt="T-Shirts Collection" class="category-img" loading="lazy">
                     <div class="category-content">
                         <h3>T-Shirts</h3>
                         <p>Explore Collection</p>
                     </div>
                 </div>
                 <div class="category-card">
-                    <img src="https://images.unsplash.com/photo-1593030103066-0093718efeb9?ixlib=rb-4.0.3" alt="Shirts" class="category-img">
+                    <img src="https://images.unsplash.com/photo-1593030103066-0093718efeb9?ixlib=rb-4.0.3" alt="Shirts Collection" class="category-img" loading="lazy">
                     <div class="category-content">
                         <h3>Shirts</h3>
                         <p>Explore Collection</p>
                     </div>
                 </div>
                 <div class="category-card">
-                    <img src="https://images.unsplash.com/photo-1541099649105-f69ad21f3246?ixlib=rb-4.0.3" alt="Jeans" class="category-img">
+                    <img src="https://images.unsplash.com/photo-1541099649105-f69ad21f3246?ixlib=rb-4.0.3" alt="Jeans Collection" class="category-img" loading="lazy">
                     <div class="category-content">
                         <h3>Jeans</h3>
                         <p>Explore Collection</p>
                     </div>
                 </div>
                 <div class="category-card">
-                    <img src="https://images.unsplash.com/photo-1552374196-1ab2a1c593e8?ixlib=rb-4.0.3" alt="Footwear" class="category-img">
+                    <img src="https://images.unsplash.com/photo-1552374196-1ab2a1c593e8?ixlib=rb-4.0.3" alt="Footwear Collection" class="category-img" loading="lazy">
                     <div class="category-content">
                         <h3>Footwear</h3>
                         <p>Explore Collection</p>
@@ -531,14 +635,14 @@
     </section>
 
     <!-- Featured Products -->
-    <section class="section" style="background-color: #f5f5f5;">
+    <section id="products" class="section" style="background-color: #f5f5f5;">
         <div class="container">
             <div class="section-header">
                 <h2 class="section-title">Featured Products</h2>
             </div>
             <div class="products-grid">
                 <div class="product-card">
-                    <img src="https://images.unsplash.com/photo-1525507119028-ed4c629a60a3?ixlib=rb-4.0.3" alt="Premium Jacket" class="product-img">
+                    <img src="https://images.unsplash.com/photo-1525507119028-ed4c629a60a3?ixlib=rb-4.0.3" alt="Premium Leather Jacket" class="product-img" loading="lazy">
                     <div class="product-info">
                         <h3 class="product-title">Premium Leather Jacket</h3>
                         <div class="rating">
@@ -553,7 +657,7 @@
                     </div>
                 </div>
                 <div class="product-card">
-                    <img src="https://images.unsplash.com/photo-1588117305388-c2631a279f82?ixlib=rb-4.0.3" alt="Designer Shirt" class="product-img">
+                    <img src="https://images.unsplash.com/photo-1588117305388-c2631a279f82?ixlib=rb-4.0.3" alt="Designer Casual Shirt" class="product-img" loading="lazy">
                     <div class="product-info">
                         <h3 class="product-title">Designer Casual Shirt</h3>
                         <div class="rating">
@@ -568,7 +672,7 @@
                     </div>
                 </div>
                 <div class="product-card">
-                    <img src="https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?ixlib=rb-4.0.3" alt="Slim Fit Jeans" class="product-img">
+                    <img src="https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?ixlib=rb-4.0.3" alt="Slim Fit Denim Jeans" class="product-img" loading="lazy">
                     <div class="product-info">
                         <h3 class="product-title">Slim Fit Denim Jeans</h3>
                         <div class="rating">
@@ -583,7 +687,7 @@
                     </div>
                 </div>
                 <div class="product-card">
-                    <img src="https://images.unsplash.com/photo-1560343090-f0409e92791a?ixlib=rb-4.0.3" alt="Sneakers" class="product-img">
+                    <img src="https://images.unsplash.com/photo-1560343090-f0409e92791a?ixlib=rb-4.0.3" alt="Urban Style Sneakers" class="product-img" loading="lazy">
                     <div class="product-info">
                         <h3 class="product-title">Urban Style Sneakers</h3>
                         <div class="rating">
@@ -606,9 +710,9 @@
         <div class="container">
             <div class="newsletter-content">
                 <h2>Subscribe to Our Newsletter</h2>
-                <p>Stay updated with our latest collections, exclusive offers, and style tips.</p>
+                <p>Stay updated with our latest collections and exclusive offers.</p>
                 <form class="newsletter-form">
-                    <input type="email" placeholder="Enter your email address" required>
+                    <input type="email" placeholder="Enter your email" required>
                     <button type="submit">Subscribe</button>
                 </form>
             </div>
@@ -620,76 +724,72 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-column">
-                    <h3>About Us</h3>
-                    <p>Jessica is a premium fashion brand dedicated to providing high-quality clothing and accessories for the modern man.</p>
+                    <h3>Jessica Fashion</h3>
+                    <p>Premium fashion brand dedicated to providing high-quality clothing and accessories.</p>
                     <div class="social-links">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-pinterest"></i></a>
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
                     </div>
                 </div>
                 <div class="footer-column">
                     <h3>Quick Links</h3>
                     <ul class="footer-links">
                         <li><a href="#">Home</a></li>
-                        <li><a href="#">About Us</a></li>
                         <li><a href="#">Shop</a></li>
                         <li><a href="#">Collections</a></li>
-                        <li><a href="#">Blog</a></li>
                         <li><a href="#">Contact</a></li>
                     </ul>
                 </div>
                 <div class="footer-column">
-                    <h3>Customer Service</h3>
+                    <h3>Contact</h3>
                     <ul class="footer-links">
-                        <li><a href="#">Shipping Policy</a></li>
-                        <li><a href="#">Return Policy</a></li>
-                        <li><a href="#">Privacy Policy</a></li>
-                        <li><a href="#">Terms & Conditions</a></li>
-                        <li><a href="#">FAQs</a></li>
-                        <li><a href="#">Track Order</a></li>
+                        <li><a href="tel:+97450928532">+974 50928532</a></li>
+                        <li><a href="mailto:khadkajessica0@gmail.com">khadkajessica0@gmail.com</a></li>
+                        <li>Doha, Qatar</li>
                     </ul>
                 </div>
-                <div class="footer-column">
-                <h3>Contact Info</h3>
-                <ul class="footer-links">
-                    <li>
-                        <i class="fas fa-map-marker-alt"></i>
-                        <a href="https://www.google.com/maps/search/?api=1&query=Doha,+Qatar" target="_blank" rel="noopener">
-                            Doha, Qatar
-                        </a>
-                    </li>
-                    <li>
-                        <i class="fas fa-phone"></i>
-                        <a href="tel:+97450928532">+974 50928532</a>
-                    </li>
-                    <li>
-                        <i class="fas fa-envelope"></i>
-                        <a href="mailto:khadkajessica0@gmail.com">khadkajessica0@gmail.com</a>
-                    </li>
-                    <li>
-                        <i class="fas fa-clock"></i>
-                        Mon–Fri: 9AM – 6PM
-                    </li>
-                </ul>
-            </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2023 Jessica Fashion. All Rights Reserved. Designed By Season</p>
+                <p>&copy; 2023 Jessica Fashion. All Rights Reserved.</p>
             </div>
         </div>
     </footer>
 
     <script>
-        // Simple JavaScript for newsletter form
+        // Mobile menu toggle
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navMenu = document.querySelector('.nav-menu');
+        
+        menuToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            const icon = menuToggle.querySelector('i');
+            icon.classList.toggle('fa-bars');
+            icon.classList.toggle('fa-times');
+        });
+
+        // Newsletter form
         document.querySelector('.newsletter-form').addEventListener('submit', function(e) {
             e.preventDefault();
             const email = this.querySelector('input[type="email"]').value;
             if(email) {
-                alert(`Thank you for subscribing with ${email}! You'll receive our latest updates soon.`);
+                alert(`Thank you for subscribing! You'll receive our latest updates soon.`);
                 this.reset();
             }
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
         });
     </script>
 </body>
