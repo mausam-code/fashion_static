@@ -633,7 +633,7 @@
     </section>
 
     <!-- Featured Products -->
-    <section id="products" class="section" style="background-color: #f5f5f5;">
+    <!-- <section id="products" class="section" style="background-color: #f5f5f5;">
         <div class="container">
             <div class="section-header">
                 <h2 class="section-title">Featured Products</h2>
@@ -652,6 +652,11 @@
                         </div>
                         <p class="product-price">$199.99</p>
                         <a href="#" class="btn">Add to Cart</a>
+                        <a href="javascript:void(0)" class="btn" 
+                        onclick="orderOnWhatsApp('Premium Leather Jacket', '$199.99')">
+   Add to Cart
+</a>
+
                     </div>
                 </div>
                 <div class="product-card">
@@ -701,7 +706,111 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
+
+    <section id="products" class="section" style="background-color: #f5f5f5;">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">Featured Products</h2>
+        </div>
+
+        <div class="products-grid">
+
+            <!-- Product 1 -->
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1525507119028-ed4c629a60a3?ixlib=rb-4.0.3"
+                     alt="Premium Leather Jacket"
+                     class="product-img" loading="lazy">
+
+                <div class="product-info">
+                    <h3 class="product-title">Premium Leather Jacket</h3>
+                    <div class="rating">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                    <p class="product-price">$199.99</p>
+
+                    <a href="javascript:void(0)"
+                       class="btn"
+                       onclick="orderOnWhatsApp('Premium Leather Jacket', '$199.99')">
+                        Add to Cart
+                    </a>
+                </div>
+            </div>
+
+            <!-- Product 2 -->
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1588117305388-c2631a279f82?ixlib=rb-4.0.3"
+                     alt="Designer Casual Shirt"
+                     class="product-img" loading="lazy">
+
+                <div class="product-info">
+                    <h3 class="product-title">Designer Casual Shirt</h3>
+                    <div class="rating">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        <i class="far fa-star"></i>
+                    </div>
+                    <p class="product-price">$89.99</p>
+
+                    <a href="javascript:void(0)"
+                       class="btn"
+                       onclick="orderOnWhatsApp('Designer Casual Shirt', '$89.99')">
+                        Add to Cart
+                    </a>
+                </div>
+            </div>
+
+            <!-- Product 3 -->
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?ixlib=rb-4.0.3"
+                     alt="Slim Fit Denim Jeans"
+                     class="product-img" loading="lazy">
+
+                <div class="product-info">
+                    <h3 class="product-title">Slim Fit Denim Jeans</h3>
+                    <div class="rating">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="product-price">$129.99</p>
+
+                    <a href="javascript:void(0)"
+                       class="btn"
+                       onclick="orderOnWhatsApp('Slim Fit Denim Jeans', '$129.99')">
+                        Add to Cart
+                    </a>
+                </div>
+            </div>
+
+            <!-- Product 4 -->
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1560343090-f0409e92791a?ixlib=rb-4.0.3"
+                     alt="Urban Style Sneakers"
+                     class="product-img" loading="lazy">
+
+                <div class="product-info">
+                    <h3 class="product-title">Urban Style Sneakers</h3>
+                    <div class="rating">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                        <i class="far fa-star"></i>
+                    </div>
+                    <p class="product-price">$149.99</p>
+
+                    <a href="javascript:void(0)"
+                       class="btn"
+                       onclick="orderOnWhatsApp('Urban Style Sneakers', '$149.99')">
+                        Add to Cart
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
 
     <!-- Newsletter -->
     <section class="newsletter">
@@ -790,5 +899,30 @@
             });
         });
     </script>
+    <script>
+const WHATSAPP_NUMBER = "+9779803645644"; // your WhatsApp number (no +)
+
+function orderOnWhatsApp(productName, price) {
+    const message =
+`Hello Jessica Fashion 👗
+
+I want to order:
+
+🛍 Product: ${productName}
+💰 Price: ${price}
+
+Please confirm availability & delivery details.
+`;
+
+    const url =
+        "https://wa.me/" +
+        WHATSAPP_NUMBER +
+        "?text=" +
+        encodeURIComponent(message);
+
+    window.open(url, "_blank");
+}
+</script>
+
 </body>
 </html>
